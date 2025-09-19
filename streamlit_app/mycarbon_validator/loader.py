@@ -59,7 +59,7 @@ def load_backend_validations(client_data_path: str) -> Tuple[pd.DataFrame, pd.Da
     These are not user-editable in the app.
     Returns (validation_sheet, error_messages)
     """
-    validations_path = get_validations_excel_path(client_data_path)
+    validations_path = "/mount/src/lreposhare/streamlit_app/validations.xlsx"
     validation_sheet = pd.read_excel(validations_path, sheet_name="Columns", header=0)
     error_messages = pd.read_excel(validations_path, sheet_name="Messages", header=0)
     return validation_sheet, error_messages
