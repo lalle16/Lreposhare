@@ -1,0 +1,170 @@
+/* Global defaults for MyCarbon (no scoped classes) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+:root{
+  --primary: #FF903F;     /* MyCarbon Orange */
+  --accent:  #2D4857;     /* MyCarbon Navy */
+  --bg:      #FFFFFF;     /* Background */
+  --text:    #2D4857;     /* Text */
+  --font-family: 'Montserrat', sans-serif;
+  --body-font-size: 14px;  /* Global base size */
+
+  /* Table/report defaults (used by pandas Styler too) */
+  --report-font-family: var(--font-family);
+  --report-font-size: 12px;
+  --report-caption-size: 14px;
+  --report-caption-weight: 600;
+  --report-caption-color: var(--text);
+  --report-row-padding: 6px 8px;
+  --report-border-color: #e5e7eb;
+}
+
+/* Base element resets */
+html { font-size: var(--body-font-size); }
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+/* Headings inherit brand color */
+h1, h2, h3 { color: var(--text); }
+
+/* Images behave nicely by default */
+img { max-width: 100%; height: auto; display: block; }
+
+/* Buttons: brand primary, square corners */
+button {
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 0;        /* square buttons */
+  padding: 0.6rem 1rem;
+  font: inherit;
+  cursor: pointer;
+}
+button:hover,
+button:focus { background: var(--accent); outline: none; }
+
+/* Streamlit sidebar (stable attribute selector) */
+[data-testid="stSidebar"] { padding-top: 1rem; }
+[data-testid="stSidebar"] img {
+  width: 60% !important;
+  margin: 0 auto;
+}
+
+/* Global table styles (covers pandas Styler + st.dataframe) */
+caption {
+  color: var(--report-caption-color) !important;
+  font-size: var(--report-caption-size) !important;
+  font-weight: var(--report-caption-weight) !important;
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+table, th, td {
+  font-family: var(--report-font-family) !important;
+  font-size: var(--report-font-size) !important;
+}
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid var(--report-border-color); padding: var(--report-row-padding); }
+
+/* Optional: make links match brand text color */
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ===========================
+   Expander containers (square)
+   =========================== */
+.st-expander,
+[data-testid="stExpander"] {
+  border: 1.5px solid rgba(45,72,87,0.20); /* subtle brand-accent border */
+  border-radius: 0;                        /* no rounding */
+  background: #fff;                        /* solid white background */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* soft shadow for separation */
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+/* Expander header (flat brand style, square) */
+.st-expander > .st-expanderHeader,
+[data-testid="stExpander"] .st-expanderHeader {
+  background: var(--accent);
+  color: #fff !important;
+  font-weight: 600;
+  padding: 0.85rem 1rem;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.st-expanderHeader svg,
+[data-testid="stExpander"] .st-expanderHeader svg {
+  fill: #fff !important;
+  stroke: #fff !important;
+}
+
+/* Expander content */
+.st-expander .st-expanderContent,
+[data-testid="stExpander"] .st-expanderContent {
+  padding: 1rem 1.2rem;
+  background: #fff;
+}
+
+/* ===========================
+   Square corners for widgets
+   =========================== */
+
+/* Inputs & text areas */
+.stTextInput input,
+.stTextArea textarea,
+[data-baseweb="input"] input,
+[data-baseweb="textarea"] textarea {
+  border-radius: 0 !important;
+}
+
+/* Selects & multiselects */
+.stSelectbox [data-baseweb="select"],
+.stMultiSelect [data-baseweb="select"] {
+  border-radius: 0 !important;
+}
+.stMultiSelect [data-baseweb="tag"] {
+  border-radius: 0 !important;
+}
+
+/* Buttons (Streamlit button + download button) */
+.stButton button,
+.stDownloadButton button {
+  border-radius: 0 !important;
+}
+
+/* File uploader */
+.stFileUploader [data-testid="stFileUploaderDropzone"] {
+  border-radius: 0 !important;
+}
+
+/* Slider (thumb + track group) */
+.stSlider [data-baseweb="slider"] > div {
+  border-radius: 0 !important;
+}
+
+/* Checkbox & radio (square) */
+.stCheckbox input,
+.stRadio input {
+  border-radius: 0 !important;
+}
+
+/* Dataframe/table wrapper */
+.stDataFrame,
+[data-testid="stTable"] table {
+  border-radius: 0 !important;
+  overflow: hidden;
+}
+
+/* Tabs (optional, keep square) */
+.stTabs [data-baseweb="tab-list"] button {
+  border-radius: 0 !important;
+}
