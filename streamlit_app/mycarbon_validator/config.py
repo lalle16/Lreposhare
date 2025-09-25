@@ -3,8 +3,6 @@ import os
 # Always point to the directory where this script lives
 APP_DIR = os.path.dirname(os.path.abspath(__file__))
 
-DEFAULT_SCOPE = "Scope 1"
-DEFAULT_TABLE = "Scope1Calcs"
 CLIENT_DATA_PATH = os.path.dirname(os.path.abspath(__file__))
 
 def get_validations_excel_path() -> str:
