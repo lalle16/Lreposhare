@@ -3,7 +3,6 @@ import io
 import streamlit as st
 import pandas as pd
 
-from mycarbon_validator.config import CLIENT_DATA_PATH
 from mycarbon_validator.loader import load_backend_validations
 from mycarbon_validator.workflow import (
     build_validation_plan,
@@ -26,7 +25,7 @@ def main():
     st.caption("Version 0.5")
 
     # Backend validations file
-    validation_sheet, error_messages = load_backend_validations(CLIENT_DATA_PATH)
+    validation_sheet, error_messages = load_backend_validations()
 
     # Sidebar
     with st.sidebar:

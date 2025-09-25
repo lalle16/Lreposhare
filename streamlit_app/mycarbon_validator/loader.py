@@ -7,7 +7,7 @@ from typing import Tuple
 import openpyxl
 import pandas as pd
 
-from .config import get_validations_excel_path
+from .config import get_validations_excel_path, client_data_path
 
 
 def _get_bytes(file_or_path) -> bytes | None:
@@ -94,7 +94,7 @@ def load_excel_data(file_or_path, sheet_name: str | None = None, table_name: str
             df = pd.read_excel(file_or_path, sheet_name=actual_title, header=0)
     return df
 
-def load_backend_validations(client_data_path: str) -> Tuple[pd.DataFrame, pd.DataFrame]:
+def load_backend_validations() -> Tuple[pd.DataFrame, pd.DataFrame]:
     """
     Load validation rules and error messages from the backend validations.xlsx.
     These are not user-editable in the app.
