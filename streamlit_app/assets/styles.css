@@ -81,10 +81,10 @@ a:hover { text-decoration: underline; }
    =========================== */
 .st-expander,
 [data-testid="stExpander"] {
-  border: 1.5px solid rgba(45,72,87,0.20); /* subtle brand-accent border */
-  border-radius: 0;                        /* no rounding */
-  background: #fff;                        /* solid white background */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* soft shadow for separation */
+  border: none;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04); /* or keep original */
   margin-bottom: 1rem;
   overflow: hidden;
 }

@@ -1,17 +1,22 @@
 from __future__ import annotations
 
+from pathlib import Path
+from html import escape
 import pandas as pd
 
 def style_errors_as_html(df: pd.DataFrame, error_cells: dict) -> str:
     styles = pd.DataFrame('', index=df.index, columns=df.columns)
     for (row_idx, col_name), error_type in error_cells.items():
-        if row_idx in styles.index and col_name in styles.columns:
-            if error_type == "empty_required":
-                styles.loc[row_idx, col_name] = 'background-color: #ff6b6b; color: white; font-weight: bold'
-            elif error_type == "blank_indicator":
-                styles.loc[row_idx, col_name] = 'background-color: #ff8787; color: white; font-weight: bold'
-            elif error_type.startswith("invalid_"):
-                styles.loc[row_idx, col_name] = 'background-color: #ffa8a8; color: black; font-weight: bold'
+        # Skip pseudo missing-column entries (-1 row index) for cell styling
+        if row_idx not in styles.index or col_name not in styles.columns:
+            continue
+        if error_type == 'empty_required':
+            styles.loc[row_idx, col_name] = 'background-color: #ff6b6b; color: white; font-weight: bold'
+        elif error_type == 'blank_indicator':
+            styles.loc[row_idx, col_name] = 'background-color: #ff8787; color: white; font-weight: bold'
+        elif error_type.startswith('invalid_'):
+            styles.loc[row_idx, col_name] = 'background-color: #ffa8a8; color: black; font-weight: bold'
+        # 'missing_column' not styled at cell level because column absent
 
     styled = (
         df.style
